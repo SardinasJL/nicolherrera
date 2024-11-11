@@ -25,7 +25,6 @@ class EstudianteController extends Controller
      */
     public function index(Request $request)
     {
-        //$estudiantes = Estudiante::paginate(4);
         session()->flashInput($request->input());
         $estudiantes = Estudiante::where("nombre","like","%$request->buscador%")
             ->orWhere("apellido","like","%$request->buscador%")->paginate(4);
